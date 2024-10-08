@@ -12,4 +12,14 @@ public class Frame {
     // us时间戳
     private Long timestamp;
 
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        return "Frame{" +
+                "timestamp=" + timestamp +
+                '}';
+    }
 }

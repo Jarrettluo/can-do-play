@@ -32,11 +32,11 @@ public class PlayTaskConsumer implements Runnable{
 
     private int lastPlayedMsgRealTimeNs;
 
-
+    private final FrameBuffer frameBuffer;
 
     // 初始化构造器
-    public PlayTaskConsumer(Queue<?> queue, int playRate) {
-        this.queue = queue;
+    public PlayTaskConsumer(FrameBuffer frameBuffer, int playRate) {
+        this.frameBuffer = frameBuffer;
         this.playRate = playRate;
     }
 
@@ -50,6 +50,12 @@ public class PlayTaskConsumer implements Runnable{
 
     @Override
     public void run() {
-
+        int i = 1;
+        while (!isStopped) {
+            Frame frame = frameBuffer.get();
+            System.out.println("frame: " + frame);
+            System.out.println("当前正在消耗" + i + "个");
+            i ++;
+        }
     }
 }

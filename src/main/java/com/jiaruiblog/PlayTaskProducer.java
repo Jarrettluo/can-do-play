@@ -29,8 +29,10 @@ public class PlayTaskProducer implements Runnable {
     // 预加载填充缓冲模式
     private boolean preloadFillBufferMode;
 
-    public PlayTaskProducer(Queue<?> queue, PlayParam playParam, String node, boolean preloadFillBufferMode) {
-        this.queue = queue;
+    private FrameBuffer frameBuffer;
+
+    public PlayTaskProducer(FrameBuffer frameBuffer, PlayParam playParam, String node, boolean preloadFillBufferMode) {
+        this.frameBuffer = frameBuffer;
         this.playParam = playParam;
         this.node = node;
         this.preloadFillBufferMode = preloadFillBufferMode;
@@ -56,6 +58,17 @@ public class PlayTaskProducer implements Runnable {
 
     @Override
     public void run() {
+        int i = 1;
+        while (true) {
+            System.out.println("生产者准备生产第" + i + "个");
+            frameBuffer.put(i);
+            i ++;
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 }

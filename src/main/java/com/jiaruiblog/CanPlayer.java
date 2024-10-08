@@ -16,17 +16,23 @@ public class CanPlayer {
     private boolean isInitialized = false;
 
     // 是否停止标志位
-    private final boolean isStopped = true;
+    private boolean isStopped = false;
 
     // 用户存储播放任务的共享缓冲区
     private Queue<?> taskBuffer;
+
+    PlayTaskConsumer playTaskConsumer;
+
+    PlayTaskProducer playTaskProducer;
 
     // 构造方法，初始化相关成员，创建对应的消费者和生产者
     public CanPlayer(boolean isInitialized) {
         this.isInitialized = isInitialized;
 
-        PlayTaskConsumer playTaskConsumer = new PlayTaskConsumer(new DelayQueue<>(), 20);
-        new PlayTaskProducer(new DelayQueue<>(), new PlayParam(), "", false);
+        FrameBuffer frameBuffer = new FrameBuffer();
+
+        this.playTaskConsumer = new PlayTaskConsumer(frameBuffer, 20);
+        this.playTaskProducer = new PlayTaskProducer(frameBuffer, new PlayParam(), "", false);
 
     }
 
@@ -67,20 +73,27 @@ public class CanPlayer {
 
     // 开始; 启动播放过程，处理预加载和延迟，控制播放的持续时间，并不断输出当前播放进度。
     public boolean start() {
+
+        while (!isStopped) {
+            // 先启动生产者
+            new Thread(playTaskProducer).start();
+            Thread thread = new Thread(this.playTaskConsumer);
+
+            thread.start();
+        }
+
+
         return false;
     }
 
     // 停止和重置播放器，确保所有相关的生产者和消费者线程安全地停止。
     public boolean stop() {
+        this.isStopped = true;
         return false;
     }
 
     public boolean reset() {
         return false;
-    }
-
-    public static void main(String[] args) {
-
     }
 
     public boolean isInitialized() {
