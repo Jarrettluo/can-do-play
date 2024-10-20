@@ -1,6 +1,8 @@
 package com.jiaruiblog;
 
 import java.util.Queue;
+import java.util.Random;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * <p>生产数据</p>
@@ -29,13 +31,24 @@ public class PlayTaskProducer implements Runnable {
     // 预加载填充缓冲模式
     private boolean preloadFillBufferMode;
 
-    private FrameBuffer frameBuffer;
+//    private FrameBuffer frameBuffer;
 
-    public PlayTaskProducer(FrameBuffer frameBuffer, PlayParam playParam, String node, boolean preloadFillBufferMode) {
-        this.frameBuffer = frameBuffer;
+    LinkedBlockingDeque<Integer> blockingQueue;
+
+
+    int i = 0;
+
+    private String name;
+
+    public PlayTaskProducer(LinkedBlockingDeque<Integer> frameBuffer, PlayParam playParam, String node,
+                            boolean preloadFillBufferMode,
+                            String name) {
+        this.blockingQueue = frameBuffer;
         this.playParam = playParam;
         this.node = node;
         this.preloadFillBufferMode = preloadFillBufferMode;
+
+        this.name = name;
     }
 
     private void start() {
@@ -58,15 +71,16 @@ public class PlayTaskProducer implements Runnable {
 
     @Override
     public void run() {
-        int i = 1;
-        while (true) {
-            System.out.println("生产者准备生产第" + i + "个");
-            frameBuffer.put(i);
-            i ++;
+        while(true){
             try {
-                Thread.sleep(10000);
+                blockingQueue.put(i);
+                System.out.println("[" + name + "] Producing value : " + i);
+                i++;
+
+                //暂停最多1秒
+                Thread.sleep(new Random().nextInt(1000));
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
 

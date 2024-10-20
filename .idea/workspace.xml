@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ba46964-7e3d-4a8f-9941-421324212d01" name="Changes" comment="增加了播放消费者和生产者">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/jiaruiblog/CanPlayerTest.java" afterDir="false" />
+    <list default="true" id="9ba46964-7e3d-4a8f-9941-421324212d01" name="Changes" comment="补充播放消费者和生产者，增加缓存队列">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/MyProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/CanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/CanPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/FrameBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/FrameBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskProducer.java" afterDir="false" />
     </list>
@@ -23,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -135,7 +133,8 @@
       <workItem from="1728224272878" duration="109000" />
       <workItem from="1728224390401" duration="2777000" />
       <workItem from="1728267162912" duration="1332000" />
-      <workItem from="1728367022712" duration="5166000" />
+      <workItem from="1728367022712" duration="6522000" />
+      <workItem from="1729430586559" duration="3690000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -153,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728267213185</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="补充播放消费者和生产者，增加缓存队列">
+      <option name="closed" value="true" />
+      <created>1728372332356</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728372332356</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +180,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="增加了播放消费者和生产者" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了播放消费者和生产者" />
+    <MESSAGE value="补充播放消费者和生产者，增加缓存队列" />
+    <option name="LAST_COMMIT_MESSAGE" value="补充播放消费者和生产者，增加缓存队列" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

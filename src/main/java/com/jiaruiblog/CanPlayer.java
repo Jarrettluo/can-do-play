@@ -2,6 +2,7 @@ package com.jiaruiblog;
 
 import java.util.Queue;
 import java.util.concurrent.DelayQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * <p></p>
@@ -21,6 +22,10 @@ public class CanPlayer {
     // 用户存储播放任务的共享缓冲区
     private Queue<?> taskBuffer;
 
+    private static final int CAPACITY = 5;
+
+    LinkedBlockingDeque<Integer> blockingQueue = new LinkedBlockingDeque<Integer>(CAPACITY);
+
     PlayTaskConsumer playTaskConsumer;
 
     PlayTaskProducer playTaskProducer;
@@ -31,9 +36,18 @@ public class CanPlayer {
 
         FrameBuffer frameBuffer = new FrameBuffer();
 
-        this.playTaskConsumer = new PlayTaskConsumer(frameBuffer, 20);
-        this.playTaskProducer = new PlayTaskProducer(frameBuffer, new PlayParam(), "", false);
+        this.playTaskConsumer = new PlayTaskConsumer(blockingQueue, 20, "消费者1");
+        this.playTaskProducer = new PlayTaskProducer(blockingQueue, new PlayParam(), "", false,
+                "生产者1");
 
+    }
+
+    public PlayTaskConsumer getPlayTaskConsumer() {
+        return playTaskConsumer;
+    }
+
+    public PlayTaskProducer getPlayTaskProducer() {
+        return playTaskProducer;
     }
 
     // 是否初始化的判断；如果没有则调用生产者的初始化方法
@@ -73,14 +87,22 @@ public class CanPlayer {
 
     // 开始; 启动播放过程，处理预加载和延迟，控制播放的持续时间，并不断输出当前播放进度。
     public boolean start() {
-
-        while (!isStopped) {
+        Thread producerThread = null;
+        if (!isStopped) {
             // 先启动生产者
-            new Thread(playTaskProducer).start();
+            producerThread = new Thread(playTaskProducer);
+            producerThread.start();
             Thread thread = new Thread(this.playTaskConsumer);
 
             thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
+
+
 
 
         return false;

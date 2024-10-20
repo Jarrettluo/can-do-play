@@ -19,10 +19,12 @@ public class FrameBuffer{
     // 定义缓存的状态
     private boolean state = true;
 
-    public synchronized void put(int num) {
+    public void put(int num) {
         Frame frame = new Frame();
         frame.setTimestamp(System.currentTimeMillis());
+        frame.setNum(num);
         queue.offer(frame);
+        System.out.println("放入队列中，个数是：" + num);
     }
 
     public synchronized Frame get() {

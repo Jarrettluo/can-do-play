@@ -12,14 +12,21 @@ public class Frame {
     // us时间戳
     private Long timestamp;
 
+    private Integer num;
+
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
     @Override
     public String toString() {
         return "Frame{" +
                 "timestamp=" + timestamp +
+                ", num=" + num +
                 '}';
     }
 }
