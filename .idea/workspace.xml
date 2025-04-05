@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ba46964-7e3d-4a8f-9941-421324212d01" name="Changes" comment="补充播放消费者和生产者，增加缓存队列">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/MyProducer.java" afterDir="false" />
+    <list default="true" id="9ba46964-7e3d-4a8f-9941-421324212d01" name="Changes" comment="使用阻塞队列完成生产者消费者模型">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/player/EnhancedTimestampPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/player/PrecisionTimestampPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/player/docs.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/CanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/CanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/FrameBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/FrameBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +41,12 @@
     &quot;assignee&quot;: &quot;Jarrettluo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Jarrettluo/can-do-play.git&quot;,
-    &quot;accountId&quot;: &quot;c18677ad-be8f-4b70-8a72-fd97f7f516a1&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jarrettluo/can-do-play.git",
+    "accountId": "06726380-3fc9-4e51-a627-7d8dec65a4fa"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -61,6 +58,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.EnhancedTimestampPlayer.executor": "Run",
+    "Application.PrecisionTimestampPlayer.executor": "Run",
     "JUnit.CanPlayerTest.testStart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -68,7 +67,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/luoji/IdeaProjects/can-do-play",
+    "last_opened_file_path": "C:/Users/luoji/Downloads/demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +88,33 @@
       <recent name="com.jiaruiblog" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EnhancedTimestampPlayer">
+    <configuration name="EnhancedTimestampPlayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jiaruiblog.player.EnhancedTimestampPlayer" />
+      <module name="can-do-play" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jiaruiblog.player.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PrecisionTimestampPlayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jiaruiblog.player.PrecisionTimestampPlayer" />
+      <module name="can-do-play" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jiaruiblog.player.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CanPlayerTest.testStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="can-do-play" />
       <extension name="coverage">
@@ -108,6 +133,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EnhancedTimestampPlayer" />
+        <item itemvalue="Application.PrecisionTimestampPlayer" />
         <item itemvalue="JUnit.CanPlayerTest.testStart" />
       </list>
     </recent_temporary>
@@ -134,7 +161,9 @@
       <workItem from="1728224390401" duration="2777000" />
       <workItem from="1728267162912" duration="1332000" />
       <workItem from="1728367022712" duration="6522000" />
-      <workItem from="1729430586559" duration="3690000" />
+      <workItem from="1729430586559" duration="4383000" />
+      <workItem from="1729584526103" duration="16000" />
+      <workItem from="1743834505863" duration="6142000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -160,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728372332356</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="使用阻塞队列完成生产者消费者模型">
+      <option name="closed" value="true" />
+      <created>1729434480170</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729434480170</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +218,8 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="增加了播放消费者和生产者" />
     <MESSAGE value="补充播放消费者和生产者，增加缓存队列" />
-    <option name="LAST_COMMIT_MESSAGE" value="补充播放消费者和生产者，增加缓存队列" />
+    <MESSAGE value="使用阻塞队列完成生产者消费者模型" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用阻塞队列完成生产者消费者模型" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -195,6 +233,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/jiaruiblog/PlayTaskConsumer.java</url>
           <line>82</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jiaruiblog/player/EnhancedTimestampPlayer.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jiaruiblog/player/EnhancedTimestampPlayer.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
