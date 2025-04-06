@@ -1,5 +1,6 @@
 package com.jiaruiblog.player;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
@@ -18,9 +19,15 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
             this.timestamp = timestamp;
             this.data = data;
         }
+
         // Getters
-        public long getTimestamp() { return timestamp; }
-        public T getData() { return data; }
+        public long getTimestamp() {
+            return timestamp;
+        }
+
+        public T getData() {
+            return data;
+        }
     }
 
     // 核心组件
@@ -30,6 +37,7 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(
             new ThreadFactory() {
                 private final AtomicInteger count = new AtomicInteger();
+
                 public Thread newThread(Runnable r) {
                     Thread t = new Thread(r, "PlayerThread-" + count.getAndIncrement());
                     t.setPriority(Thread.MAX_PRIORITY);
@@ -47,6 +55,7 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
 
     // 时间补偿参数
     private static final long MAX_COMPENSATION = 1_000_000; // 1秒微秒数
+    // 补偿步长，表示每次允许的最大调整量（绝对值）
     private static final long COMPENSATION_STEP = 10_000; // 10毫秒
 
     // 高精度时钟源
@@ -124,16 +133,15 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
         TimestampedData<T> next = playQueue.peek();
 
         if (next != null) {
-            long expectedTime = baseTimestamp + (long)((next.getTimestamp() - baseTimestamp) / speedFactor);
+            long expectedTime = baseTimestamp + (long) ((next.getTimestamp()) / speedFactor);
             long delayMicros = expectedTime - currentMicros - timeDrift.get();
-
             // 动态时间补偿
+            // 统一处理正负偏差，确保补偿步长不超过预设的 COMPENSATION_STEP 绝对值
             if (Math.abs(delayMicros) > COMPENSATION_STEP) {
                 long compensation = Math.min(Math.max(-COMPENSATION_STEP, delayMicros), COMPENSATION_STEP);
                 timeDrift.addAndGet(compensation);
                 delayMicros -= compensation;
             }
-
             if (delayMicros <= 0) {
                 // 立即触发
                 handleData(playQueue.poll());
@@ -155,9 +163,8 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
     private void handleData(TimestampedData<T> data) {
         if (data != null) {
             long actualTime = nanoTime() / 1000;
-            long expectedTime = baseTimestamp + (long)((data.getTimestamp() - baseTimestamp) / speedFactor);
+            long expectedTime = baseTimestamp + (long) ((data.getTimestamp()) / speedFactor);
             timeDrift.addAndGet(actualTime - expectedTime);
-
             dataHandler.accept(data.getData());
         }
     }
@@ -166,7 +173,7 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
     public void seekTo(long timestampMicros) {
         pause();
         playQueue.clear();
-        baseTimestamp = nanoTime() / 1000 - (long)(timestampMicros / speedFactor);
+        baseTimestamp = nanoTime() / 1000 - (long) (timestampMicros / speedFactor);
         preloader.interrupt(); // 触发重新预加载
         play();
     }
@@ -226,28 +233,27 @@ public class EnhancedTimestampPlayer<T> implements AutoCloseable {
     // 使用示例
     public static void main(String[] args) throws Exception {
         // 创建测试数据源（内存映射文件）
-        long baseMicros = System.nanoTime() / 1000;
-
+        // 注意时间戳都是us
         List<TimestampedData<String>> data = Arrays.asList(
-                new TimestampedData<>(1_000_000L + baseMicros, "Event1"),
-                new TimestampedData<>(3_000_000L + baseMicros, "Event2"),
-                new TimestampedData<>(6_000_000L + baseMicros, "Event3"),
-                new TimestampedData<>(9_000_000L + baseMicros, "Event4"),
-                new TimestampedData<>(11_000_000L + baseMicros, "Event5"),
-                new TimestampedData<>(20_000_000L + baseMicros, "Event36")
+                new TimestampedData<>(1_000_000L, "Event1"),
+                new TimestampedData<>(3_000_000L, "Event2"),
+                new TimestampedData<>(6_000_000L, "Event3"),
+                new TimestampedData<>(9_000_000L, "Event4"),
+                new TimestampedData<>(11_000_000L, "Event5"),
+                new TimestampedData<>(20_000_000L, "Event6")
         );
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
         // 创建播放器
         EnhancedTimestampPlayer<String> player = new EnhancedTimestampPlayer<>(
                 data,
                 event -> {
-                    System.out.printf("[%dµs] %s%n", System.nanoTime()/1000, event);
-                    System.out.println("当前时间：" + System.currentTimeMillis());
+                    System.out.printf("[%dµs] %s%n", System.nanoTime() / 1000, event);
+                    System.out.println("当前时间：" + sdf.format(new Date(System.currentTimeMillis())));
                 },
                 1024
         );
 
-        player.setSpeed(2.0);
+        player.setSpeed(0.5);
         player.play();
 
         // 运行演示
