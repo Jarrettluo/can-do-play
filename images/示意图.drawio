@@ -1,0 +1,100 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="第 1 页" id="hQq7FDWT0WeBtUFU3mT3">
+    <mxGraphModel dx="816" dy="481" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-5" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="480" as="sourcePoint" />
+            <mxPoint x="400" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-6" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="490" as="sourcePoint" />
+            <mxPoint x="160" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-7" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="159.67" y="520" as="sourcePoint" />
+            <mxPoint x="159.67" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-8" value="" style="endArrow=none;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="490" as="sourcePoint" />
+            <mxPoint x="200" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-9" value="" style="endArrow=none;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="490" as="sourcePoint" />
+            <mxPoint x="280" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-10" value="" style="endArrow=none;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="490" as="sourcePoint" />
+            <mxPoint x="360" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-11" value="p1" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-12" value="p2" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-13" value="p3" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-14" value="" style="line;strokeWidth=2;html=1;dashed=1;dashPattern=1 1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-15" value="程序时间线" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="510" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-16" value="散点时间线" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-18" value="① baseTimestamp&amp;nbsp;&lt;div&gt;= System.nanoTime()&amp;nbsp; / 1000&lt;/div&gt;" style="text;strokeColor=none;align=right;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="530" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-19" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#6600CC;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="199.83" y="446" as="sourcePoint" />
+            <mxPoint x="199.83" y="466" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="199.83" y="466" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-20" value="" style="endArrow=none;html=1;rounded=0;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="530" as="sourcePoint" />
+            <mxPoint x="170" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-21" value="③ expectedTime&lt;div&gt;= baseTimestamp + data.getTimestamp()&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;fontColor=#6600CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="400" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-22" value="② currentMicros = System.nanoTime / 1000" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;fontColor=light-dark(#CC0066,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="170" y="530" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-23" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="500" as="sourcePoint" />
+            <mxPoint x="200" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-24" value="④ delayNanos" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;fontColor=light-dark(#C73500,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="170" y="495" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YXms_Er6bjY9NJE8IVbc-25" value="p1：1_000_000L Event1&lt;div&gt;p2:&amp;nbsp; 3_000_000L Event2&lt;/div&gt;&lt;div&gt;p3:&amp;nbsp; 6_000_000L Event3&lt;/div&gt;" style="text;strokeColor=none;align=right;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="260" y="400" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
